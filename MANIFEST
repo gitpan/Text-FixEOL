@@ -1,0 +1,10 @@
+Build.PL
+Changes
+lib/Text/FixEOL.pm
+lib/Text/FixEOL.pod
+Makefile.PL
+MANIFEST
+MANIFEST.SKIP
+META.yml
+README
+t/01_Text-FixEOL.t
