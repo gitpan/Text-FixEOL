@@ -11,6 +11,9 @@ WriteMakefile(
     ($] >= 5.005 ?     ## Add these new keywords supported since 5.005
       (ABSTRACT_FROM  => 'lib/Text/FixEOL.pod', # retrieve abstract from module
        AUTHOR         => 'Benjamin Franz <snowhare@nihongo.org>') : ()),
-       # NO_META        => 1,
+
+       ($] >= 5.800 ?     ## Add these new keywords supported since 5.8
+             (NO_META      => 1) : ()),
+
        PL_FILES       => {},
 );

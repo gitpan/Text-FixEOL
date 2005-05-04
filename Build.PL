@@ -4,6 +4,10 @@ my $build = Module::Build->new
         dist_author    => 'Benjamin Franz <snowhare@nihongo.org>',
         dist_abstract  => 'Canonicalizes mixed convention EOL/EOF',
         license        => 'perl',
+        requires => {
+                'Test::More'       => '0.54',
+                'Test::NoWarnings' => '0.07',
+                },
         build_requires => {
                 'Test::More'       => '0.54',
                 'Test::NoWarnings' => '0.07',

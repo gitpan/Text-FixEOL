@@ -2,3 +2,5 @@ Revision history for Perl extension Text::FixEOL.
 
 1.00 2005.05.01 - First Release
 
+1.01 2005.05.03 - Attempt to system to play nice with the Test::xxxx modules
+                  and CPANPLUS. No functional changes.

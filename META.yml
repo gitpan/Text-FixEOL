@@ -1,8 +1,18 @@
---- #YAML:1.0
+---
 name: Text-FixEOL
-version: 1.00
+version: 1.01
 author:
   - Benjamin Franz <snowhare@nihongo.org>
 abstract: Canonicalizes mixed convention EOL/EOF
 license: perl
-generated_by: Module::Build version 0.261, without YAML.pm
+requires:
+  Test::More: 0.54
+  Test::NoWarnings: 0.07
+build_requires:
+  Test::More: 0.54
+  Test::NoWarnings: 0.07
+provides:
+  Text::FixEOL:
+    file: lib/Text/FixEOL.pm
+    version: 1.01
+generated_by: Module::Build version 0.261

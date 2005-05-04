@@ -3,16 +3,16 @@
 
 Text::FixEOL - Canonicalizes text to a specified EOL/EOF convention, repairing any 'mixed' usages
 
-SYNOPSIS
+=head1 SYNOPSIS
 
  use Text::FixEOL;
- 
+
  my $fixer = Text::FixEOL->new({ EOL     => 'platform|asis|mac|dos|unix|vms|netware|network|os2|cygwin|crlf|cr|lf|literal:$value',
                                  EOF     => 'platform|add|asis|remove|mac|dos|unix|vms|netware|cygwin|network|os2',
                                  FixLast => 'platform│yes│no│mac│dos│unix│vms│netware│network│os2│cygwin',
              });
  my $fixed_text = $fixer->fix_eol($string);
- 
+
  my $mac_text     = $fixer->eol_to_mac($string);
  my $windows_text = $fixer->eol_to_dos($string);
  my $unix_text    = $fixer->eol_to_unix($string);
@@ -21,11 +21,20 @@ SYNOPSIS
 =head1 DESCRIPTION
 
 Converts the EOL and EOF conventions in the passed string to a canonicalization form
-that handles 'mixed' EOL conventions. 
+that handles 'mixed' EOL conventions.
 
 It canonicalizes EOL as \n (the platform defined EOL) if it does not know the particular
 platform. Can also 'fix' the end-of-file mark if needed and ensure that the last line of
 the string is EOL terminated.
+
+=head1 CHANGES
+
+1.00 2005.05.02 - Initial Release
+
+1.01 2005.05.03 - Changes to Build.PL to have Test::NoWarnings
+                  and Test::More as prerequisite modules and changes
+                  to META.yml to try to make CPANPLUS happy. Small documentation
+                  change to 'new'. No functional changes.
 
 =head1 METHODS
 
@@ -33,7 +42,7 @@ the string is EOL terminated.
 
 =item new({ [EOL => 'B<platform>|asis|mac|dos|unix|vms|netware|network|os2|cygwin|crlf|cr|lf|literal:$value', ]
             [EOF => 'B<platform>|add|asis|remove|mac|dos|unix|vms|netware|network|os2|cygwin', ]
-            [FixLast => 'B<yes>|no', ]
+            [FixLast => 'B<platform>|yes|no|mac│dos│unix│vms│netware│network│os2│cygwin', ]
            });
 
 Instantates a new Text::FixEOL object and (optionally) allows setting the modes of operation.
@@ -50,7 +59,7 @@ EOF issues. Specifically, the presence of terminal Ctrl-Z characters (EOF)
 and whether or not the last line of the string is terminated with EOL (FixLast).
 
 When running in default mode (all setting at 'platform') on an unrecognized platform,
-it will attempt to convert to the local machine conventions using \n for EOL, 
+it will attempt to convert to the local machine conventions using \n for EOL,
 'remove' for EOF and 'yes' for FixLast.
 
 It attempts to 'Do What I Mean' (DWIM) for mixed EOL values (text where there is a mixture
@@ -245,7 +254,7 @@ missing. Default is 'platform'.
 
 =item fix_last_mode;
 
-Returns the current mode ('yes' or 'no') for the handling of the last line of the string 
+Returns the current mode ('yes' or 'no') for the handling of the last line of the string
 (the actual 'yes'/'no' value rather than the mnemomic used for configuration).
 
 'yes' indicates the processor will ensure the last line is terminated with an EOL value, appending
@@ -305,9 +314,9 @@ Specifies what is to be done with DOS end-of-file characters (control-Z).
  'asis'     the EOF (whatever it is) will be left alone.
  'remove'   any trailing Ctrl-Z (EOF) characters will be removed.
  'platform' use the current execution environment platform's default for EOF handling.
- 
+
  The platforms have the following default EOF handling behaviors:
- 
+
              EOF Handling
  unix           remove
  dos              asis
@@ -319,7 +328,7 @@ Specifies what is to be done with DOS end-of-file characters (control-Z).
  os2              asis
  netware          asis
  cygwin           asis
- network        remove 
+ network        remove
 
 =back
 
@@ -350,6 +359,6 @@ Everything
 
 =head1 VERSION
 
-1.00 - 2004.05.02 Initial release
+1.01 - 2004.05.03 Documentation and CPANPLUS compatibility changes.
 
 =cut
