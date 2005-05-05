@@ -3,7 +3,7 @@ package Text::FixEOL;
 use strict;
 use warnings;
 
-our $VERSION = '1.01';
+our $VERSION = '1.02';
 
 ##########################################################################################
 
@@ -13,79 +13,84 @@ sub DEBUG () { 0; }
 
 my %_Platform_Defaults = (
         lf   => {
-            fixlast => 'no',
-            eof     => 'asis',
-            eol     => "\012",
+            'fixlast' => 'no',
+            'eof'     => 'asis',
+            'eol'     => "\012",
         },
         cr   => {
-            fixlast => 'no',
-            eof     => 'asis',
-            eol     => "\015",
+            'fixlast' => 'no',
+            'eof'     => 'asis',
+            'eol'     => "\015",
         },
         crlf   => {
-            fixlast => 'no',
-            eof     => 'asis',
-            eol     => "\015\012",
+            'fixlast' => 'no',
+            'eof'     => 'asis',
+            'eol'     => "\015\012",
         },
         asis   => {
-            fixlast => 'no',
-            eof     => 'asis',
-            eol     => "asis",
+            'fixlast' => 'no',
+            'eof'     => 'asis',
+            'eol'     => "asis",
         },
         network => {
-            fixlast => 'yes',
-            eof     => 'remove',
-            eol     => "\015\012",
+            'fixlast' => 'yes',
+            'eof'     => 'remove',
+            'eol'     => "\015\012",
         },
         mac   => {
-            fixlast => 'yes',
-            eof     => 'remove',
-            eol     => "\015",
+            'fixlast' => 'yes',
+            'eof'     => 'remove',
+            'eol'     => "\015",
         },
         macos   => {
-            fixlast => 'yes',
-            eof     => 'remove',
-            eol     => "\015",
+            'fixlast' => 'yes',
+            'eof'     => 'remove',
+            'eol'     => "\015",
         },
         windows => {
-            fixlast => 'yes',
-            eof     => 'asis',
-            eol     => "\015\012",
+            'fixlast' => 'yes',
+            'eof'     => 'asis',
+            'eol'     => "\015\012",
         },
         mswin32 => {
-            fixlast => 'yes',
-            eof     => 'asis',
-            eol     => "\015\012",
+            'fixlast' => 'yes',
+            'eof'     => 'asis',
+            'eol'     => "\015\012",
         },
         os2     => {
-            fixlast => 'yes',
-            eof     => 'asis',
-            eol     => "\015\012",
+            'fixlast' => 'yes',
+            'eof'     => 'asis',
+            'eol'     => "\015\012",
         },
         vms     => {
-            fixlast => 'yes',
-            eof     => 'remove',
-            eol     => "\015\012",
+            'fixlast' => 'yes',
+            'eof'     => 'remove',
+            'eol'     => "\015\012",
         },
         netware => {
-            fixlast => 'yes',
-            eof     => 'asis',
-            eol     => "\015\012",
+            'fixlast' => 'yes',
+            'eof'     => 'asis',
+            'eol'     => "\015\012",
         },
         dos     => {
-            fixlast => 'yes',
-            eof     => 'asis',
-            eol     => "\015\012",
+            'fixlast' => 'yes',
+            'eof'     => 'asis',
+            'eol'     => "\015\012",
         },
         cygwin  => {
-            fixlast => 'yes',
-            eof     => 'asis',
-            eol     => "\015\012",
+            'fixlast' => 'yes',
+            'eof'     => 'asis',
+            'eol'     => "\015\012",
         },
         unix  => {
-            fixlast => 'yes',
-            eof     => 'remove',
-            eol     => "\012",
+            'fixlast' => 'yes',
+            'eof'     => 'remove',
+            'eol'     => "\012",
+        },
+        'unknown' => {
+            'fixlast' => 'yes',
+            'eof'     => 'remove',
+            'eol'     => "\n",
         },
 );
 
@@ -93,9 +98,13 @@ my %_Platform_Defaults = (
 
 sub new {
     my $proto   = shift;
-    my $package = __PACKAGE__;
-    my $class   = ref($proto) || $proto || $package;
-    my $self    = bless {},$class;
+    my $proto_ref = ref($proto);
+    my $package   = __PACKAGE__;
+    my $class;
+    if    ($proto_ref) { $class = $proto_ref;  }
+    elsif ($proto)     { $class = $proto;      }
+    else               { $class = $package; }
+    my $self = bless {},$class;
 
     $self->eol_handling('platform');
     $self->eof_handling('platform');
@@ -108,8 +117,6 @@ sub new {
         my $parm_type = ref($parm);
         if ($parm_type eq 'HASH') {
             %raw_properties = %$parm;
-        } elsif ($parm_type eq 'ARRAY') {
-            %raw_properties = @$parm;
         } else {
             require Carp;
             Carp::croak("${package}::new() - Unexpected parameter type passed to constructor: $parm_type");
@@ -120,12 +127,22 @@ sub new {
 
     my %properties = map { lc($_) => $raw_properties{$_} } keys %raw_properties;
 
-    if ($properties{'eol'})     { $self->eol_handling($properties{'eol'}); delete $properties{'eol'}; }
-    if ($properties{'eof'})     { $self->eof_handling($properties{'eof'}); delete $properties{'eof'}; }
-    if ($properties{'fixlast'}) { $self->fix_last_handling($properties{'fixlast'}); delete $properties{'fixlast'}; }
+    if ($properties{'eol'}) {
+        $self->eol_handling($properties{'eol'});
+        delete $properties{'eol'};
+    }
+    if ($properties{'eof'}) {
+        $self->eof_handling($properties{'eof'});
+        delete $properties{'eof'};
+    }
+    if ($properties{'fixlast'}) {
+        $self->fix_last_handling($properties{'fixlast'});
+        delete $properties{'fixlast'};
+    }
     my @extra_properties = keys %properties;
     if (0 < @extra_properties) {
-        croak("${package}::new() - Unexpected attributes passed: " . join(', ',sort @extra_properties) . "\n");
+        require Carp;
+        Carp::croak("${package}::new() - Unexpected attributes passed: " . join(', ',sort @extra_properties) . "\n");
     }
 
     return $self;
@@ -201,37 +218,32 @@ sub eol_to_crlf {
 sub fix_eol {
     my $self = shift;
 
-    unless (0 < @_) {
+    unless (1 == @_) {
         require Carp;
         my $package = __PACKAGE__;
-        Carp::croak("${package}::fix_eol() -  No string passed for conversion");
+        Carp::croak("${package}::fix_eol() -  Incorrect number of parameters passed. One string (only) is required.");
     }
 
     my ($string) = @_;
-    if (DEBUG) {
-        print STDERR "Input string " . _url_escape($string) . "\n";
+    my $eol_mode = $self->eol_mode;
+    if ($eol_mode ne 'asis') {
+        $string      = $self->_eol_to_base_lf($string);
     }
-    $string      = $self->_eol_to_base_lf($string);
-    if (DEBUG) {
-        print STDERR "Canonicalized string " . _url_escape($string) . "\n";
-    }
-    $string      = $self->_eol_to_base_lf($string);
     my $fix_last = $self->fix_last_mode;
     if ($fix_last eq 'yes') {
         my $old_eof = '';
         if ($string =~ s/(\032+)$//s) { # \032 is Ctrl-Z
             $old_eof = "\032";
         }
-        if ($string ne '') {
+        if (($string ne '') and ($eol_mode ne 'asis')) {
             if ($string !~ m/\012$/s) {
-                if (DEBUG) {
-                    print STDERR "Appending EOL\n";
-                }
                 $string .= "\012";
             }
 
         } else {
-            $string = "\012";
+            if ($eol_mode ne 'asis') {
+                $string = "\012";
+            }
         }
         $string .= $old_eof;
     }
@@ -239,13 +251,13 @@ sub fix_eol {
     my $eof_handling = $self->eof_mode;
     if ($eof_handling eq 'remove') {
         $string =~ s/\032+$//s;
-    } elsif ($eof_handling eq 'add') {
-        $string =~ s/\032*$/\032/s;
+
+    } elsif (($eof_handling eq 'add') and ($string !~ m/\032$/s)) {
+        $string .= "\032";
     }
 
-    my $eol_handling = $self->eol_handling;
-    if ($eol_handling ne 'asis') {
-        my $eol_replacement = $self->eol_mode;
+    if ($eol_mode ne 'asis') {
+        my $eol_replacement = $eol_mode;
         $string =~ s/\012/$eol_replacement/gs;
     }
     return $string;
@@ -259,9 +271,6 @@ sub eol_mode {
 
     if ($eol_handling =~ m/^literal:(.+)$/s) {
         return $1;
-
-    } elsif ($eol_handling eq 'platform') {
-        return "\n";
 
     } else {
         my $default_eol = $self->_platform_defaults($eol_handling, 'EOL');
@@ -296,9 +305,6 @@ sub _platform_defaults {
     my $package = __PACKAGE__;
 
     my ($platform_name, $property) = @_;
-    if (DEBUG) {
-        print STDERR "_platform_defaults('$platform_name' => $property);\n";
-    }
 
     $platform_name = lc ($platform_name);
     $property      = lc ($property);
@@ -312,14 +318,9 @@ sub _platform_defaults {
 
     my $platform_defaults = $_Platform_Defaults{$platform_name};
     unless (defined ($platform_defaults)) {
-        if    ($property eq 'eof')     { return 'remove'; }
-        elsif ($property eq 'eol')     { return "\n";     }
-        elsif ($property eq 'fixlast') { return 'yes';    }
-
-        require Carp;
-        Carp::croak("${package}::_platform_defaults() - Unknown platform and property of $platform_name/$property");
+        $platform_defaults =  $_Platform_Defaults{'unknown'};
     }
-    my $property_value    = $platform_defaults->{$property};
+    my $property_value = $platform_defaults->{$property};
     unless (defined ($property_value)) {
         require Carp;
         Carp::croak("${package}::_platform_defaults() - Unknown property of $property");
@@ -383,11 +384,11 @@ sub _property {
     my $property = shift;
 
     my $package = __PACKAGE__;
-    if (@_ == 0) {
+    if (0 == @_) {
         my $output = $self->{$package}->{$property};
         return $output;
 
-    } elsif (@_ == 1) {
+    } elsif (1 == @_) {
         my $input = shift;
         $self->{$package}->{$property} = $input;
         return;
@@ -397,12 +398,5 @@ sub _property {
 }
 
 ##########################################################################################
-
-sub _url_escape {
-    my ($s)=@_;
-    return '' unless defined ($s);
-    $s=~s/([\000-\377])/"\%".unpack("H",$1).unpack("h",$1)/egs;
-    $s;
-}
 
 1;

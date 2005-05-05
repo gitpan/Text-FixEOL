@@ -4,3 +4,9 @@ Revision history for Perl extension Text::FixEOL.
 
 1.01 2005.05.03 - Attempt to system to play nice with the Test::xxxx modules
                   and CPANPLUS. No functional changes.
+
+1.02 2005.05.05 - Added more build tests and made various bug
+                  fixes and tweaks. 100% code coverage for
+                  tests reached. Added Test::Pod to tests.
+                  Changed text in POD for licence to correctly
+                  identify license as dual Artistic/GPL.

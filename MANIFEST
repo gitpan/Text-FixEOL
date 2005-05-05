@@ -8,3 +8,4 @@ MANIFEST.SKIP
 META.yml
 README
 t/01_Text-FixEOL.t
+t/99_pod.t

@@ -17,6 +17,7 @@ Text::FixEOL - Canonicalizes text to a specified EOL/EOF convention, repairing a
  my $windows_text = $fixer->eol_to_dos($string);
  my $unix_text    = $fixer->eol_to_unix($string);
  my $crlf_text    = $fixer->to_crlf($string);
+ my $network_text = $fixer->to_network($string);
 
 =head1 DESCRIPTION
 
@@ -35,6 +36,12 @@ the string is EOL terminated.
                   and Test::More as prerequisite modules and changes
                   to META.yml to try to make CPANPLUS happy. Small documentation
                   change to 'new'. No functional changes.
+
+1.02 2005.05.05 - Added more build tests and made various bug
+                  fixes and tweaks. 100% code coverage for
+                  tests reached. Added Test::Pod to tests.
+                  Changed text in POD for licence to correctly
+                  identify license as dual Artistic/GPL.
 
 =head1 METHODS
 
@@ -89,7 +96,7 @@ The EOL canonicalization form is premised on the following example
 map which attempts to 'DWIM' for all cases of between 1 and 4
 consecutive CR/LF characters. The values shown in the table are
 for I<illustrative> purposes only. The actual values depend on the
-conversion mode(s) specified.
+conversion modes specified.
 
   ["\012" => "\012"],
   ["\015" => "\012"],
@@ -347,7 +354,7 @@ mode rather than the mnemomic used for configuration.
 
 =head1 LICENSE
 
-Artistic
+Perl (Dual Artistic/GPL)
 
 =head1 BUGS
 
@@ -359,6 +366,6 @@ Everything
 
 =head1 VERSION
 
-1.01 - 2004.05.03 Documentation and CPANPLUS compatibility changes.
+1.02 - 2004.05.04 Documentation and build test changes. No functional changes.
 
 =cut
