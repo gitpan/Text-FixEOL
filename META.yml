@@ -1,20 +1,11 @@
----
-name: Text-FixEOL
-version: 1.02
-author:
-  - Benjamin Franz <snowhare@nihongo.org>
-abstract: Canonicalizes mixed convention EOL/EOF
-license: perl
+# http://module-build.sourceforge.net/META-spec.html
+#XXXXXXX This is a prototype!!!  It will change in the future!!! XXXXX#
+name:         Text-FixEOL
+version:      1.03
+version_from: lib/Text/FixEOL.pm
+installdirs:  site
 requires:
-  Test::More: 0.54
-  Test::NoWarnings: 0.07
-  Test::Pod: 1.20
-build_requires:
-  Test::More: 0.54
-  Test::NoWarnings: 0.07
-  Test::Pod: 1.20
-provides:
-  Text::FixEOL:
-    file: lib/Text/FixEOL.pm
-    version: 1.02
-generated_by: Module::Build version 0.261
+    Test::More:                    0.54
+
+distribution_type: module
+generated_by: ExtUtils::MakeMaker version 6.17

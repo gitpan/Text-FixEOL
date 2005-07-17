@@ -10,3 +10,8 @@ Revision history for Perl extension Text::FixEOL.
                   tests reached. Added Test::Pod to tests.
                   Changed text in POD for licence to correctly
                   identify license as dual Artistic/GPL.
+
+1.03 2005.06.17 - Removed NoWarnings test to improve ability to build on
+                  older installations. Added pod coverage test. Made all
+                  pod tests optional. No functional changes.
+

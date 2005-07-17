@@ -1,5 +1,3 @@
-#!/usr/bin/perl -Tw
-
 use strict;
 use warnings;
 
@@ -12,8 +10,7 @@ use blib ('./blib','../blib');
 # change 'tests => 3' to 'tests => last_test_to_print';
 
 
-use Test::More (tests => 23);
-use Test::NoWarnings;
+use Test::More (tests => 22);
 
 #########################
 # Insert your test code below, the Test::More module is use()ed here so read
@@ -108,12 +105,6 @@ ok (test_invalid_platform_property());
 #########
 # Test 22
 ok (test_invalid_object_property());
-
-#########
-# Test 23
-#
-# the 'NoWarnings' test is implicitly test
-# N+1 from the last explict test
 
 exit;
 

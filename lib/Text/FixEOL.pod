@@ -43,6 +43,10 @@ the string is EOL terminated.
                   Changed text in POD for licence to correctly
                   identify license as dual Artistic/GPL.
 
+1.03 2005.06.17 - Removed NoWarnings test to improve ability to build on
+                  older installations. Added pod coverage test. Made all
+                  pod tests optional. No functional changes.
+
 =head1 METHODS
 
 =over 4
@@ -290,7 +294,7 @@ The full list of supported settings is as follows:
   network  - use network default   (\015\012)
   os2      - use OS/2 default      (\015\012)
   cygwin   - use CygWin default    (\015\012)
-  platform - use the currect execution environment default.
+  platform - use the current execution environment default.
   asis     - leave EOLs alone.
   crlf     - use CRLF              (\015\012)
   cr       - use CR                (\015)
@@ -307,7 +311,7 @@ The full list of supported settings is as follows:
 =item eol_mode;
 
 Returns the current EOL string (the actual string value(s) for the EOL).
-This is the literal string value, not the mnemomic used for configuration.
+This is the literal string value, not the mnemomic name used for configuration.
 
 =back
 
@@ -366,6 +370,6 @@ Everything
 
 =head1 VERSION
 
-1.02 - 2004.05.04 Documentation and build test changes. No functional changes.
+1.03 - 2005.06.17 Documentation and build test changes. No functional changes.
 
 =cut

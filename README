@@ -1,4 +1,4 @@
-Text-FixEOL version 1.00
+Text-FixEOL 
 ========================
 
 INSTALLATION
@@ -24,14 +24,12 @@ DEPENDENCIES
 This module requires these other modules and libraries:
 
   Test::More       (0.54 or later)
-  Test::NoWarnings (0.07 or later)
-  Test::Pod        (1.20 or later)
 
-They are only used during testing of the build.
+It is only used during testing of the build.
 
 COPYRIGHT AND LICENCE
 
-Copyright (C) 2005 by Jerry Franz
+Copyright (C) 2005 by Benjamin Franz
 
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself, either Perl version 5.8.3 or,
