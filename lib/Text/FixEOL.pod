@@ -47,6 +47,11 @@ the string is EOL terminated.
                   older installations. Added pod coverage test. Made all
                   pod tests optional. No functional changes.
 
+1.04 2005.09.09 - Tweaked POD build tests. Tweaked META.yml. Extended
+                  license statement and appended liability disclaimer.
+                  Appended Artistic and GPL licenses to distribution.
+                  No functional changes.
+
 =head1 METHODS
 
 =over 4
@@ -354,11 +359,37 @@ mode rather than the mnemomic used for configuration.
 
 =head1 COPYRIGHT
 
-2005 Benjamin Franz <snowhare@nihongo.org>
+2005 Benjamin Franz <snowhare@nihongo.org>.
 
 =head1 LICENSE
 
-Perl (Dual Artistic/GPL)
+This program is free software; you can redistribute it
+and/or modify it under the same terms and conditions as
+Perl itself.
+
+This means that you can, at your option, redistribute it and/or modify it under
+either the terms the GNU Public License (GPL) version 1 or later, or under the
+Perl Artistic License.
+
+See http://dev.perl.org/licenses/
+
+=head1 DISCLAIMER
+
+THIS SOFTWARE IS PROVIDED ``AS IS'' AND WITHOUT ANY EXPRESS
+OR IMPLIED WARRANTIES, INCLUDING, WITHOUT LIMITATION, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A
+PARTICULAR PURPOSE.
+
+Use of this software in any way or in any form, source or binary,
+is not allowed in any country which prohibits disclaimers of any
+implied warranties of merchantability or fitness for a particular
+purpose or any disclaimers of a similar nature.
+
+IN NO EVENT SHALL I BE LIABLE TO ANY PARTY FOR DIRECT, INDIRECT,
+SPECIAL, INCIDENTAL,  OR CONSEQUENTIAL DAMAGES ARISING OUT OF THE
+USE OF THIS SOFTWARE AND ITS DOCUMENTATION (INCLUDING, BUT NOT
+LIMITED TO, LOST PROFITS) EVEN IF I HAVE BEEN ADVISED OF THE
+POSSIBILITY OF SUCH DAMAGE
 
 =head1 BUGS
 
@@ -370,6 +401,6 @@ Everything
 
 =head1 VERSION
 
-1.03 - 2005.06.17 Documentation and build test changes. No functional changes.
+1.04 - 2005.09.09 Documentation and build test changes. No functional changes.
 
 =cut

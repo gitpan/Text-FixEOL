@@ -5,9 +5,9 @@ my $build = Module::Build->new
         dist_abstract  => 'Canonicalizes mixed convention EOL/EOF',
         license        => 'perl',
         requires => {
-                'Test::More'       => '0.54',
+                'Test::More'       => 0,
                 },
         build_requires => {
-                'Test::More'       => '0.54',
+                'Test::More'       => 0,
                 },
       )->create_build_script;

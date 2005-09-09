@@ -15,3 +15,7 @@ Revision history for Perl extension Text::FixEOL.
                   older installations. Added pod coverage test. Made all
                   pod tests optional. No functional changes.
 
+1.04 2005.09.09 - Tweaked POD tests. Tweaked META.yml. Extended license
+                  statement and appended liability disclaimer. Appended GPL and
+                  Artistic licenses to distribution. No functional changes.
+
