@@ -1,9 +1,8 @@
 package Text::FixEOL;
 
 use strict;
-use warnings;
 
-our $VERSION = '1.04';
+$Text::FixEOL::VERSION = '1.05';
 
 ##########################################################################################
 

@@ -30,27 +30,31 @@ the string is EOL terminated.
 
 =head1 CHANGES
 
-1.00 2005.05.02 - Initial Release
+ 1.00 2005.05.02 - Initial Release
 
-1.01 2005.05.03 - Changes to Build.PL to have Test::NoWarnings
-                  and Test::More as prerequisite modules and changes
-                  to META.yml to try to make CPANPLUS happy. Small documentation
-                  change to 'new'. No functional changes.
+ 1.01 2005.05.03 - Changes to Build.PL to have Test::NoWarnings
+                   and Test::More as prerequisite modules and changes
+                   to META.yml to try to make CPANPLUS happy. Small documentation
+                   change to 'new'. No functional changes.
 
-1.02 2005.05.05 - Added more build tests and made various bug
-                  fixes and tweaks. 100% code coverage for
-                  tests reached. Added Test::Pod to tests.
-                  Changed text in POD for licence to correctly
-                  identify license as dual Artistic/GPL.
+ 1.02 2005.05.05 - Added more build tests and made various bug
+                   fixes and tweaks. 100% code coverage for
+                   tests reached. Added Test::Pod to tests.
+                   Changed text in POD for licence to correctly
+                   identify license as dual Artistic/GPL.
 
-1.03 2005.06.17 - Removed NoWarnings test to improve ability to build on
-                  older installations. Added pod coverage test. Made all
-                  pod tests optional. No functional changes.
+ 1.03 2005.06.17 - Removed NoWarnings test to improve ability to build on
+                   older installations. Added pod coverage test. Made all
+                   pod tests optional. No functional changes.
 
-1.04 2005.09.09 - Tweaked POD build tests. Tweaked META.yml. Extended
-                  license statement and appended liability disclaimer.
-                  Appended Artistic and GPL licenses to distribution.
-                  No functional changes.
+ 1.04 2005.09.09 - Tweaked POD build tests. Tweaked META.yml. Extended
+                   license statement and appended liability disclaimer.
+                   Appended Artistic and GPL licenses to distribution.
+                   No functional changes.
+
+ 1.05 2005.09.13 - Changed pod tests to be more CPANTS friendly.
+                   Removed usage of 'warnings' pragma  and 'our'
+                   for Perl 5.005 compatibility.
 
 =head1 METHODS
 
@@ -397,10 +401,10 @@ None known.
 
 =head1 TODO
 
-Everything
+Nothing.
 
 =head1 VERSION
 
-1.04 - 2005.09.09 Documentation and build test changes. No functional changes.
+1.05 released 2005.09.13
 
 =cut

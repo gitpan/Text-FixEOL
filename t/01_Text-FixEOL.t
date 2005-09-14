@@ -1,7 +1,6 @@
 use strict;
-use warnings;
 
-use blib ('./blib','../blib');
+use lib ('./blib','../blib', './lib', '../lib');
 
 # Before `make install' is performed this script should be runnable with
 # `make test'. After `make install' it should work as `perl Text-FixEOL.t'

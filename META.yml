@@ -1,6 +1,6 @@
 ---
 name: Text-FixEOL
-version: 1.04
+version: 1.05
 author:
   - Benjamin Franz <snowhare@nihongo.org>
 abstract: Canonicalizes mixed convention EOL/EOF
@@ -12,5 +12,5 @@ build_requires:
 provides:
   Text::FixEOL:
     file: lib/Text/FixEOL.pm
-    version: 1.04
+    version: 1.05
 generated_by: Module::Build version 0.261

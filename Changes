@@ -19,3 +19,6 @@ Revision history for Perl extension Text::FixEOL.
                   statement and appended liability disclaimer. Appended GPL and
                   Artistic licenses to distribution. No functional changes.
 
+1.05 2005.09.13 - Changed pod tests to be more CPANTS friendly.
+                  Removed usage of 'warnings' pragma and 'our' for
+                  Perl 5.005 compatibility.
