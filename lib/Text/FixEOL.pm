@@ -2,7 +2,7 @@ package Text::FixEOL;
 
 use strict;
 
-$Text::FixEOL::VERSION = '1.05';
+$Text::FixEOL::VERSION = '1.06';
 
 ##########################################################################################
 

@@ -22,3 +22,7 @@ Revision history for Perl extension Text::FixEOL.
 1.05 2005.09.13 - Changed pod tests to be more CPANTS friendly.
                   Removed usage of 'warnings' pragma and 'our' for
                   Perl 5.005 compatibility.
+
+1.06 2011.07.30 - Replaced inadvertent Unicode usage in POD with non-Unicode.
+                  No functional changes.
+

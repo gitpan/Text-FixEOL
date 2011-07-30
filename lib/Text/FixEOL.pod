@@ -9,7 +9,7 @@ Text::FixEOL - Canonicalizes text to a specified EOL/EOF convention, repairing a
 
  my $fixer = Text::FixEOL->new({ EOL     => 'platform|asis|mac|dos|unix|vms|netware|network|os2|cygwin|crlf|cr|lf|literal:$value',
                                  EOF     => 'platform|add|asis|remove|mac|dos|unix|vms|netware|cygwin|network|os2',
-                                 FixLast => 'platform│yes│no│mac│dos│unix│vms│netware│network│os2│cygwin',
+                                 FixLast => 'platform|yes|no|mac|dos|unix|vms|netware|network|os2|cygwin',
              });
  my $fixed_text = $fixer->fix_eol($string);
 
@@ -56,13 +56,16 @@ the string is EOL terminated.
                    Removed usage of 'warnings' pragma  and 'our'
                    for Perl 5.005 compatibility.
 
+ 1.06 2011.07.30 - Replaced inadvertent Unicode usage in POD with non-Unicode.
+                   No functional changes.
+
 =head1 METHODS
 
 =over 4
 
 =item new({ [EOL => 'B<platform>|asis|mac|dos|unix|vms|netware|network|os2|cygwin|crlf|cr|lf|literal:$value', ]
             [EOF => 'B<platform>|add|asis|remove|mac|dos|unix|vms|netware|network|os2|cygwin', ]
-            [FixLast => 'B<platform>|yes|no|mac│dos│unix│vms│netware│network│os2│cygwin', ]
+            [FixLast => 'B<platform>|yes|no|mac|dos|unix|vms|netware|network|os2|cygwin', ]
            });
 
 Instantates a new Text::FixEOL object and (optionally) allows setting the modes of operation.
@@ -263,7 +266,7 @@ This is equivalent to using fix_eol with
 
 =over 4
 
-=item fix_last_handling(['B<platform>|yes|no|mac│dos│unix│vms│netware│network│os2│cygwin']);
+=item fix_last_handling(['B<platform>|yes|no|mac|dos|unix|vms|netware|network|os2|cygwin']);
 
 Get/set accessor that specifies whether or not the last line of the string should have an EOL added if
 missing. Default is 'platform'.
@@ -405,6 +408,6 @@ Nothing.
 
 =head1 VERSION
 
-1.05 released 2005.09.13
+1.06 released 2011.07.30
 
 =cut
